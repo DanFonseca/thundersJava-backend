@@ -42,33 +42,21 @@ public class GerenteController {
 			return ResponseEntity.ok(objeto);
 		}
 
-	@PostMapping("/login/racf")
-	public ResponseEntity<Gerente> loginByRacf (@RequestBody Gerente gerente){
-		
-		 Gerente obj = gerenteDAO.findByRacfAndSenha(gerente.getRacf(), gerente.getSenha());
-			
-			return obj == null ? ResponseEntity.notFound().build() :
-				ResponseEntity.ok().body(obj);
-	}
+	@PostMapping("/login")
+	public ResponseEntity<Gerente> login (@RequestBody Gerente gerente){
+		Gerente obj = null;
+		System.out.println("OBJETO GERENTE " + gerente);
 	
-	@PostMapping("/login/funcional")
-	public ResponseEntity<Gerente> loginByFuncional (@RequestBody Gerente gerente){
-	
-		Gerente obj = gerenteDAO.findByFuncionalAndSenha(gerente.getFuncional(), gerente.getSenha());
-			
-		return obj == null ? ResponseEntity.notFound().build() :
-			ResponseEntity.ok().body(obj);
-	}
-	
-	@PostMapping("/login/email")
-	public ResponseEntity<Gerente> loginByEmail(@RequestBody Gerente gerente){
-		Gerente obj = gerenteDAO.findByEmailAndSenha(gerente.getEmail(), gerente.getSenha());
-		if (obj==null) {
-			return ResponseEntity.notFound().build();
+		if(gerente.getNome().length() == 9) {
+			obj = gerenteDAO.findByFuncionalAndSenha(gerente.getNome(), gerente.getSenha());
+		}else {
+			obj = gerenteDAO.findByRacfAndSenha(gerente.getNome(), gerente.getSenha());
 		}
-		return ResponseEntity.ok(obj);
+	
+		return obj == null ? ResponseEntity.notFound().build() : ResponseEntity.ok().body(gerente);
+			
 	}
 	
 
 
-}//fecha classe
+}
