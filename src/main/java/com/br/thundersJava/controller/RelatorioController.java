@@ -29,7 +29,7 @@ public class RelatorioController {
 	@Autowired
 	private AgendamentoDAO agendamentoDAO;
 	
-	@GetMapping("/relatorio/{nomeAgencia}")
+	@GetMapping("/agendamentoNomeAgencia/{nomeAgencia}")
 	public ResponseEntity<List<Agencia>> agendamentoPorAgencia (@PathVariable String nomeAgencia){
 		List<Agencia> agencias = agenciaDAO.findBynomeAgencia(nomeAgencia);
 		
@@ -37,7 +37,7 @@ public class RelatorioController {
 	}
 	
 	
-	@GetMapping("/agendamentoPorData/{data}")
+	@GetMapping("/agendamentoData/{data}")
 	public ResponseEntity<List<Agendamento>> agendamentoPorData (
 			@PathVariable (value="data") 
 			@DateTimeFormat(pattern="dd-MM-yyyy") Date data) 
@@ -48,4 +48,16 @@ public class RelatorioController {
 		
 		return agendamentos.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(agendamentos);
 	}
+	
+	
+//	@GetMapping("/agendamentoNomeCliente/{nome}")
+//	public ResponseEntity<List<Agendamento>> relatorioPorNomeCliente (
+//			@PathVariable  String nomeCliente) 
+//			throws ParseException{
+//
+//		 
+//		List<Agendamento> agendamentos = agendamentoDAO.findByData(data);
+//		
+//		return agendamentos.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(agendamentos);
+//	}
 }

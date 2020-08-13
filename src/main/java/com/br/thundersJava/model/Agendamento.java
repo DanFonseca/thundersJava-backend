@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "itmn032_agendamento")
+@Table(name = "AGENDAMENTO")
 public class Agendamento {
 	
 	@Column(name="id")
@@ -24,14 +24,14 @@ public class Agendamento {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="nome_cli", length=100)
-	private String nome_cli;
+	@Column(name="nomeCliente", length=100)
+	private String nomeCliente;
 
-	@Column(name="email_cli", length = 100)
-	private String email_cli;
+	@Column(name="emailCliente", length = 100)
+	private String emailCliente;
 	
-	@Column(name="celular_cli", length = 20)
-	private String celular_cli;
+	@Column(name="celularCliente", length = 20)
+	private String celularCliente;
 		
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy")
 	@Column(name="data")
@@ -49,18 +49,14 @@ public class Agendamento {
 	private Agencia agencia;
 	
 	
-	public Agendamento() {
-		super();
-	}
-
 	
-public Agendamento(int id, String nome_cli, String email_cli, String celular_cli, Date data, String hora,
+	public Agendamento(int id, String nomeCliente, String emailCliente, String celularCliente, Date data, String hora,
 			String observacao, Agencia agencia) {
 		super();
 		this.id = id;
-		this.nome_cli = nome_cli;
-		this.email_cli = email_cli;
-		this.celular_cli = celular_cli;
+		this.nomeCliente = nomeCliente;
+		this.emailCliente = emailCliente;
+		this.celularCliente = celularCliente;
 		this.data = data;
 		this.hora = hora;
 		this.observacao = observacao;
@@ -68,9 +64,12 @@ public class Agendamento {
 	}
 
 
+	public Agendamento() {
+		super();
+	}
 
 
-public int getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -80,33 +79,33 @@ public int getId() {
 	}
 
 
-	public String getNome_cli() {
-		return nome_cli;
+	public String getNomeCliente() {
+		return nomeCliente;
 	}
 
 
-	public void setNome_cli(String nome_cli) {
-		this.nome_cli = nome_cli;
+	public void setNomeCliente(String nomeCliente) {
+		this.nomeCliente = nomeCliente;
 	}
 
 
-	public String getEmail_cli() {
-		return email_cli;
+	public String getEmailCliente() {
+		return emailCliente;
 	}
 
 
-	public void setEmail_cli(String email_cli) {
-		this.email_cli = email_cli;
+	public void setEmailCliente(String emailCliente) {
+		this.emailCliente = emailCliente;
 	}
 
 
-	public String getCelular_cli() {
-		return celular_cli;
+	public String getCelularCliente() {
+		return celularCliente;
 	}
 
 
-	public void setCelular_cli(String celular_cli) {
-		this.celular_cli = celular_cli;
+	public void setCelularCliente(String celularCliente) {
+		this.celularCliente = celularCliente;
 	}
 
 
@@ -119,18 +118,15 @@ public int getId() {
 		this.data = data;
 	}
 
-	
 
 	public String getHora() {
 		return hora;
 	}
 
 
-
 	public void setHora(String hora) {
 		this.hora = hora;
 	}
-
 
 
 	public String getObservacao() {
@@ -153,11 +149,11 @@ public int getId() {
 	}
 
 
-	
 	@Override
 	public String toString() {
-		return "Agendamento [id=" + id + ", data=" + data + ", hora=" + hora + ", observacao=" + observacao
-				+ ", agencia=" + agencia + ", nome=" + nome_cli + ", email=" + email_cli + ", celular=" + celular_cli + "]";
+		return "Agendamento [id=" + id + ", nomeCliente=" + nomeCliente + ", emailCliente=" + emailCliente
+				+ ", celularCliente=" + celularCliente + ", data=" + data + ", hora=" + hora + ", observacao="
+				+ observacao + ", agencia=" + agencia + "]";
 	}
 
 	

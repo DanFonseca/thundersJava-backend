@@ -9,5 +9,5 @@ import com.br.thundersJava.model.Agendamento;
 
 public interface AgendamentoDAO extends CrudRepository<Agendamento, Integer> {
 	public List<Agendamento> findByData (Date data);
-	//public List<Agendamento> findBynome_cli (String nome);
+	public List<Agendamento> findBynomeCliente (String nome);
 }
