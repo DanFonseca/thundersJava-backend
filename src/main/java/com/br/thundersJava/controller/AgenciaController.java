@@ -41,11 +41,5 @@ public class AgenciaController {
 		return ResponseEntity.ok(objeto);
 	}
 	
-	@GetMapping("/relatorio")
-	public ResponseEntity<List<Agencia>> agendamentoPorAgencia (@RequestParam(name = "nomeAgencia") String nomeAgencia){
-		List<Agencia> agencias = agenciaDAO.findBynomeAgencia(nomeAgencia);
-		
-		return agencias.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(agencias);
-	}
 	
 }

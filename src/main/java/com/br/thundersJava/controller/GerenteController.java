@@ -22,7 +22,6 @@ public class GerenteController {
 	@Autowired
 	private GerenteDAO gerenteDAO;
 	
-	
 	//retorna mais de um gerente
 		@GetMapping("/gerentes")
 		public ResponseEntity<List<Gerente>> retornarGerentes(){
