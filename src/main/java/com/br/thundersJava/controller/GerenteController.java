@@ -34,4 +34,16 @@ public class GerenteController {
 		return obj == null ? ResponseEntity.notFound().build() :
 			ResponseEntity.ok().body(obj);
 	}
-}
+	
+	@PostMapping("/login/email")
+	public ResponseEntity<Gerente> loginByEmail(@RequestBody Gerente gerente){
+		Gerente obj = gerenteDAO.findByEmailAndSenha(gerente.getEmail(), gerente.getSenha());
+		if (obj==null) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(obj);
+	}
+	
+
+
+}//fecha classe
