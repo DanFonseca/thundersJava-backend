@@ -40,10 +40,10 @@ public class configs implements CommandLineRunner  {
 		Gerente adriana = new Gerente(0,"adriana","912365785", "asgasdc", "456", "adriana.jpeg", "adriana@adriana.com");
 		
 		//criando cadastro de agencias.
-		Agencia mooca = new Agencia(0,"Itaú Mooca","09:00","14:00", null);
-		Agencia interlagos = new Agencia(0,"Itaú Interlagos","09:00","14:00", null);
-		Agencia jabaquara = new Agencia(0,"Itaú Jabaquara","09:00","14:00", null);
-		Agencia morumbi = new Agencia(0,"Itaú Morumbi","09:00","14:00", null);
+		Agencia mooca = new Agencia(0,"Mooca","09:00","14:00", null);
+		Agencia interlagos = new Agencia(0,"Interlagos","09:00","14:00", null);
+		Agencia jabaquara = new Agencia(0,"Jabaquara","09:00","14:00", null);
+		Agencia morumbi = new Agencia(0,"Morumbi","09:00","14:00", null);
 		
 		agenciaDAO.saveAll(Arrays.asList(mooca, interlagos, jabaquara, morumbi));
 	
@@ -59,7 +59,5 @@ public class configs implements CommandLineRunner  {
 		agendamentoDAO.saveAll(Arrays.asList(jorge, cecilia, pedro, marcela,paloma, douglas));
 		
 		gerenteDAO.saveAll(Arrays.asList(daniel, adriana));
-		
-
 	}
 }
