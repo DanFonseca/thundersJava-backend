@@ -7,5 +7,4 @@ public interface GerenteDAO extends CrudRepository<Gerente, Integer> {
 	public Gerente findByFuncionalAndSenha(String funcional, String senha);
 	public Gerente findByRacfAndSenha(String racf, String senha);
 
-
 }

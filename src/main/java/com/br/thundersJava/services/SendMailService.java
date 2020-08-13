@@ -1,4 +1,4 @@
-package com.br.thundersJava.services;
+/*package com.br.thundersJava.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -22,4 +22,4 @@ public class SendMailService {
         System.out.println("EMAIL ENVIADO COM SUCESSO PARA: " + sendTo);
         
 	}
-}
+}*/

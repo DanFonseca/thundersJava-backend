@@ -22,7 +22,7 @@ public class AgenciaController {
 	
 	@GetMapping("/relatorio")
 	public ResponseEntity<List<Agencia>> agendamentoPorAgencia (@RequestParam(name = "nomeAgencia") String nomeAgencia){
-		List<Agencia> agencias = agenciaDAO.findByNome(nomeAgencia);
+		List<Agencia> agencias = agenciaDAO.findBynomeAgencia(nomeAgencia);
 		
 		return agencias.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(agencias);
 	}

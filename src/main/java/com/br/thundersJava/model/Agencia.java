@@ -1,6 +1,5 @@
 package com.br.thundersJava.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,41 +9,48 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
+@Table(name = "itmn032_agencia")
 public class Agencia {
 	
+	@Column(name="id")
 	@Id()
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="nome", length = 50)
-	private String nome;
-	@Column(name="horaInicio", length = 10)
-	private String horaInicio;
-	@Column(name="horaFim", length = 10)
-	private String horaFim;
+	@Column(name="nomeAgencia", length=100)
+	private String nomeAgencia;
 	
-	 
-	@OneToMany(cascade = CascadeType.ALL , mappedBy="agencia")
+	@Column(name="horaInicio", length = 5)
+	private String horaInicio;
+	
+	@Column(name="horaFim", length = 5)
+	private String horaFim;
+		 
 	@JsonIgnoreProperties("agencia")
+	@OneToMany(cascade = CascadeType.ALL , mappedBy="agencia")
 	private List<Agendamento> agendamentos;
 
 	
-	public Agencia(int id, String nome, String horaInicio, String horaFim) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.horaInicio = horaInicio;
-		this.horaFim = horaFim;
-	}
-	
-
 	public Agencia() {
 		super();
 	}
+
+	
+	public Agencia(int id, String nomeAgencia, String horaInicio, String horaFim, List<Agendamento> agendamentos) {
+		super();
+		this.id = id;
+		this.nomeAgencia = nomeAgencia;
+		this.horaInicio = horaInicio;
+		this.horaFim = horaFim;
+		this.agendamentos = agendamentos;
+	}
+
+
 
 	public int getId() {
 		return id;
@@ -53,14 +59,17 @@ public class Agencia {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 
-	public String getNome() {
-		return nome;
+	public String getNomeAgencia() {
+		return nomeAgencia;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+
+	public void setNomeAgencia(String nomeAgencia) {
+		this.nomeAgencia = nomeAgencia;
 	}
+
 
 	public String getHoraInicio() {
 		return horaInicio;
@@ -82,14 +91,13 @@ public class Agencia {
 		return agendamentos;
 	}
 
-	public void setAgendamento(List<Agendamento> agendamentos) {
+	public void setAgendamentos(List<Agendamento> agendamentos) {
 		this.agendamentos = agendamentos;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Agencia [id=" + id + ", nome=" + nome + ", horaInicio=" + horaInicio + ", horaFim=" + horaFim
+		return "Agencia [id=" + id + ", nome=" + nomeAgencia + ", horaInicio=" + horaInicio + ", horaFim=" + horaFim
 				+ ", agendamento=" + agendamentos + "]";
 	}
 	

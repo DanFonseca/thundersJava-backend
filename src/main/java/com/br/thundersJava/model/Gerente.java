@@ -1,6 +1,5 @@
 package com.br.thundersJava.model;
 
-import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,75 +8,107 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Gerente")
+@Table(name = "TB_GERENTE")
 public class Gerente {
 	
+	@Column(name="id")
 	@Id()
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(length = 50)
+	
+	@Column(name="nome", length=40)
 	private String nome;
-	@Column(length = 15)
+	
+	@Column(name="funcional", length=15)
 	private String funcional;
-	@Column(length = 10)
+	
+	@Column(name="racf", length=10)
 	private String racf;
-	@Column(length = 20)
+	
+	@Column(name="senha", length=20)
 	private String senha;
-	@Column(length = 50)
+	
+	@Column(name="foto", length=100)
 	private String foto;
 	
+	@Column(name="email", length=70)
+	private String email;
 	
-	public Gerente(int id, String nome, String funcional, String racf, String senha, String foto) {	
+	public Gerente() {
+		super();
+	}
+	
+	public Gerente(int id, String nome, String funcional, String racf, String senha, String foto, String email) {
+		super();
 		this.id = id;
 		this.nome = nome;
 		this.funcional = funcional;
 		this.racf = racf;
 		this.senha = senha;
 		this.foto = foto;
+		this.email = email;
 	}
-	
-	public Gerente() {}
 	
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public String getFuncional() {
 		return funcional;
 	}
+
 	public void setFuncional(String funcional) {
 		this.funcional = funcional;
 	}
+
 	public String getRacf() {
 		return racf;
 	}
+
 	public void setRacf(String racf) {
 		this.racf = racf;
 	}
+
 	public String getSenha() {
 		return senha;
 	}
+
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
 	public String getFoto() {
 		return foto;
 	}
+
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	@Override
 	public String toString() {
 		return "Gerente [id=" + id + ", nome=" + nome + ", funcional=" + funcional + ", racf=" + racf + ", senha="
-				+ senha + ", foto=" + foto + "]";
+				+ senha + ", foto=" + foto + "EMAIL=" + email + "]";
 	}
 	
 	
