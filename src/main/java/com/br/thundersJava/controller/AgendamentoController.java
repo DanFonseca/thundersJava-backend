@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.br.thundersJava.dao.AgendamentoDAO;
-import com.br.thundersJava.model.Agencia;
 import com.br.thundersJava.model.Agendamento;
+import com.br.thundersJava.services.EmailServiceImpl;
+
 
 @RestController
 @CrossOrigin("*")
@@ -20,21 +21,22 @@ public class AgendamentoController {
 	@Autowired
 	private AgendamentoDAO agendaDAO;
 	
+	@Autowired
+	private EmailServiceImpl emailServiceImpl;
+	
 	
 	@PostMapping("/agendar")
-	public ResponseEntity<Agendamento> GravarAgenda(@RequestBody Agendamento agenda){
-	try {
-		  
+	public ResponseEntity<Agendamento> GravarAgenda(@RequestBody Agendamento agendaamento){	
 
-			/*String horaMaxima = "14:00";
-			String horaMinima = "10:00";
-			int horaMax = Integer.parseInt(horaMaxima.substring(0,2));*/
-			
-			agendaDAO.save(agenda);
-			return ResponseEntity.ok(agenda);
-		}catch (Exception e) {
-			return ResponseEntity.status(403).build();
+		Agendamento agentamento = agendaDAO.save(agendaamento);
+		
+		if(agentamento != null) {
+			emailServiceImpl.sendSimpleMessage("", "", "");
+			return ResponseEntity.ok(agendaamento);
 		}
+		
+		return ResponseEntity.status(403).build(); 
+				
 	}
 
 	@PostMapping("/agendarTodos")
