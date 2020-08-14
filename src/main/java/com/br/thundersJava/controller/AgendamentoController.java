@@ -31,7 +31,7 @@ public class AgendamentoController {
 		Agendamento obj = agendaDAO.save(agendaamento);
 
 		if(obj != null) {
-			//emailServiceImpl.sendSimpleMessage(obj);
+			emailServiceImpl.sendSimpleMessage(obj);
 			return ResponseEntity.ok(agendaamento);
 		}
 
