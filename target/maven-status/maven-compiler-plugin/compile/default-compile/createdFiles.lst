@@ -3,8 +3,9 @@ com\br\thundersJava\dao\AgenciaDAO.class
 com\br\thundersJava\config\configs.class
 com\br\thundersJava\ThundersJavaApplication.class
 com\br\thundersJava\model\Agencia.class
-com\br\thundersJava\controller\HelloWorldController.class
-com\br\thundersJava\services\SendMailService.class
+com\br\thundersJava\controller\AgenciaController.class
+com\br\thundersJava\controller\AgendamentoController.class
+com\br\thundersJava\controller\RelatorioController.class
 com\br\thundersJava\dao\AgendamentoDAO.class
 com\br\thundersJava\model\Gerente.class
 com\br\thundersJava\dao\GerenteDAO.class

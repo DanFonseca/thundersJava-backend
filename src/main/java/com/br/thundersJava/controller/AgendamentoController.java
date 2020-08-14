@@ -1,9 +1,6 @@
 package com.br.thundersJava.controller;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.br.thundersJava.dao.AgendamentoDAO;
+import com.br.thundersJava.model.Agencia;
 import com.br.thundersJava.model.Agendamento;
 
 @RestController
@@ -26,6 +24,8 @@ public class AgendamentoController {
 	@PostMapping("/agendar")
 	public ResponseEntity<Agendamento> GravarAgenda(@RequestBody Agendamento agenda){
 	try {
+		  
+
 			/*String horaMaxima = "14:00";
 			String horaMinima = "10:00";
 			int horaMax = Integer.parseInt(horaMaxima.substring(0,2));*/
@@ -36,6 +36,10 @@ public class AgendamentoController {
 			return ResponseEntity.status(403).build();
 		}
 	}
-	
 
+	@PostMapping("/agendarTodos")
+	public ResponseEntity<List<Agendamento>> gravar (@RequestBody List<Agendamento> agendamentos){
+		List<Agendamento> obj = (List<Agendamento>) agendaDAO.saveAll(agendamentos);
+		return ResponseEntity.ok(obj);
+	}
 }

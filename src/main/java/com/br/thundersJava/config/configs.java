@@ -1,8 +1,6 @@
 package com.br.thundersJava.config;
 
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -12,7 +10,6 @@ import com.br.thundersJava.dao.AgenciaDAO;
 import com.br.thundersJava.dao.AgendamentoDAO;
 import com.br.thundersJava.dao.GerenteDAO;
 import com.br.thundersJava.model.Agencia;
-import com.br.thundersJava.model.Agendamento;
 import com.br.thundersJava.model.Gerente;
 
 @Configuration
@@ -28,36 +25,24 @@ public class configs implements CommandLineRunner  {
 	private AgendamentoDAO agendamentoDAO;
 
 	@Override
-	public void run(String... args) throws Exception {	
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		
-		gerenteDAO.deleteAll();
-		agenciaDAO.deleteAll();
-		agendamentoDAO.deleteAll();
+	public void run(String... args) throws Exception {		
+//		agenciaDAO.deleteAll();
+//		gerenteDAO.deleteAll();
+//		agendamentoDAO.deleteAll();
 		
         //criando os gerentes
-		Gerente daniel = new Gerente(0,"daniel","987312845", "dafrefo", "123", "daniel.jpeg","daniel@daniel.com");
-		Gerente adriana = new Gerente(0,"adriana","912365785", "asgasdc", "456", "adriana.jpeg", "adriana@adriana.com");
+		Gerente daniel = new Gerente(1,"daniel","987312845", "dafrefo", "123", "daniel.jpeg","daniel@daniel.com");
+		Gerente adriana = new Gerente(2,"adriana","912365785", "asgasdc", "456", "adriana.jpeg", "adriana@adriana.com");
+		gerenteDAO.saveAll(Arrays.asList(daniel, adriana));
+		
 		
 		//criando cadastro de agencias.
-		Agencia mooca = new Agencia(0,"Mooca","09:00","14:00", null);
-		Agencia interlagos = new Agencia(0,"Interlagos","09:00","14:00", null);
-		Agencia jabaquara = new Agencia(0,"Jabaquara","09:00","14:00", null);
-		Agencia morumbi = new Agencia(0,"Morumbi","09:00","14:00", null);
+		Agencia mooca = new Agencia(1,"Mooca","09:00","14:00", null);
+		Agencia interlagos = new Agencia(2,"Interlagos","09:00","14:00", null);
+		Agencia jabaquara = new Agencia(3,"Jabaquara","09:00","14:00", null);
+		Agencia morumbi = new Agencia(4,"Morumbi","09:00","14:00", null);
 		
 		agenciaDAO.saveAll(Arrays.asList(mooca, interlagos, jabaquara, morumbi));
-	
-		//Criando os Agendamentos
-		Agendamento jorge = new Agendamento(0,"Jorge Rodrigues","jorge@ggmail.com", "(11)95873-0053",sdf.parse("25/10/2020"), "09:00", "Tirar Extrato Bancário", interlagos  );
-		Agendamento paloma = new Agendamento(0,"Paloma Wadovski", "paloma.wadovski@gmail.com", "(11)94523-9874",sdf.parse("18/10/2020"), "11:00", "Trocar conta bancária", morumbi );
-		Agendamento cecilia = new Agendamento(0, "Cecilia Meira", "Cecilia@ggmail.com", "(11)94893-5813",sdf.parse("17/10/2020"), "13:00", "Abrir Conta", mooca );
-		Agendamento pedro = new Agendamento(0,"Pedro", "pedro_ribeiro@gmail.com", "(11)97841-3214", sdf.parse("15/11/2022"), "14:00", "Recuperar a senha do cartão de crédito", jabaquara  );
-		Agendamento marcela = new Agendamento(0, "Marcela", "marcela.moreira@outlook.com", "(11)95213-6931",sdf.parse("03/01/2020"), "12:30", "Falar com meu Gerente", mooca );
-		Agendamento douglas = new Agendamento(0,"Douglas Oliveira", "douglas.oliveira@outlook.com", "(11)98523-5476", sdf.parse("23/07/2021"), "13:25", "Investir em ações ITAÚSA", interlagos );
-		
-		
-		agendamentoDAO.saveAll(Arrays.asList(jorge, cecilia, pedro, marcela,paloma, douglas));
-		
-		gerenteDAO.saveAll(Arrays.asList(daniel, adriana));
+
 	}
 }
