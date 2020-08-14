@@ -40,9 +40,9 @@ public class GerenteController {
 			}
 			return ResponseEntity.ok(objeto);
 		}
-
+		
 	@PostMapping("/login")
-	public ResponseEntity<Gerente> login (@RequestBody Gerente gerente){
+	public ResponseEntity<Gerente> login(@RequestBody Gerente gerente){
 		Gerente obj = null;
 		System.out.println("OBJETO GERENTE " + gerente);
 	
@@ -51,8 +51,12 @@ public class GerenteController {
 		}else {
 			obj = gerenteDAO.findByRacfAndSenha(gerente.getNome(), gerente.getSenha());
 		}
-	
-		return obj == null ? ResponseEntity.notFound().build() : ResponseEntity.ok().body(gerente);
+		
+		if (obj==null) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(obj);
+		
 			
 	}
 	
