@@ -7,5 +7,5 @@ import org.springframework.data.repository.CrudRepository;
 import com.br.thundersJava.model.Agencia;
 
 public interface AgenciaDAO extends CrudRepository<Agencia, Integer> {
-	public List<Agencia> findBynomeAgencia(String nomeAgencia);	
+	public List<Agencia> findBynomeAgencia (String nomeAgencia);	
 }
