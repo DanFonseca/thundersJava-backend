@@ -30,14 +30,10 @@ public class configs implements CommandLineRunner  {
 
 	@Override
 	public void run(String... args) throws Exception {		
-//		agenciaDAO.deleteAll();
-//		gerenteDAO.deleteAll();
-//		agendamentoDAO.deleteAll();
 		
         //criando os gerentes
-		Gerente daniel = new Gerente(1,"daniel","987312845", "dafrefo", "123", "daniel.jpeg","daniel@daniel.com");
-		Gerente adriana = new Gerente(2,"adriana","912365785", "asgasdc", "456", "adriana.jpeg", "adriana@adriana.com");
-		gerenteDAO.saveAll(Arrays.asList(daniel, adriana));
+		Gerente daniel = new Gerente(1,"daniel","0101", "danfreitas", "123", "daniel.jpeg","daniel@daniel.com");
+		gerenteDAO.saveAll(Arrays.asList(daniel));
 		
 		
 		//criando cadastro de agencias.
